@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-
+import json
 from sense_hat import SenseHat
 
 def main():
@@ -9,7 +8,7 @@ def main():
 	tem = (tem_humidity + tem_pressure) / 2
 	hum = sense.get_humidity()
 	air = sense.get_pressure()
-	print str(tem) + ',' + str(hum) + ',' + str(air)
+	print json.dumps( { 'temperature': tem, 'humidity': hum, 'pressure': air } )
 
 if __name__ == "__main__":
 	main()

@@ -1,11 +1,11 @@
 #!/bin/sh
+DIR=$(dirname "$(readlink -f "$0")")
+LOG=$DIR/biab.log
 
-DIR=$(dirname $0)
-COMMAND="$DIR/$1/$2.sh"
-
-if [ -f $COMMAND ]; then
-	$COMMAND "$3"
+if [ -t 0 ]; then
+	# Runs in a terminal so output colourised debug
+	DEBUG=biab:* /usr/bin/node $DIR/. "$@"
 else
-	echo $0 ' <device> <command> [data]';
-	exit 1
+	# Store debug to a log file - no colour
+	DEBUG=biab:* /usr/bin/node $DIR/. "$@" 2>>$LOG
 fi

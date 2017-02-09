@@ -1,8 +1,8 @@
 <?php
 
-class CameraCron {
-	const OPTION_INTERVAL = 'biab_camera_interval';
-	const OPTION_PERIOD = 'biab_camera_period';
+class SensehatCron {
+	const OPTION_INTERVAL = 'biab_sensehat_interval';
+	const OPTION_PERIOD = 'biab_sensehat_period';
 
 	public function set_interval( $interval ) {
 		$interval = max( 0, $interval );
