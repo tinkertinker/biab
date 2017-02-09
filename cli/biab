@@ -1,11 +1,4 @@
 #!/bin/sh
+DIR=$(dirname "$(readlink -f "$0")")
 
-DIR=$(dirname $0)
-COMMAND="$DIR/$1/$2.sh"
-
-if [ -f $COMMAND ]; then
-	$COMMAND "$3"
-else
-	echo $0 ' <device> <command> [data]';
-	exit 1
-fi
+DEBUG=biab:* /usr/bin/node $DIR/. "$@" 2>>$DIR/biab.log
