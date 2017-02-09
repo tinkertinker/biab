@@ -27,7 +27,6 @@ function runCommand( emitter, command, commandData ) {
 
 	emitter.on( 'result', json => {
 		console.log( json );
-		process.exit( 0 );
 	} );
 
 	emitter.emit( command, wp, commandData );
