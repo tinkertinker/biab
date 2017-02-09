@@ -13,7 +13,7 @@ Blog In A Box comes as two parts:
 
 The plugin is installed as per a normal WordPress plugin.
 
-### CLI Utility
+### CLI Utility Installation
 
 The CLI tools should be installed in the following location (default, but can be changed):
 
@@ -28,3 +28,13 @@ And add this line:
 `www-data ALL=(pi:pi) NOPASSWD: /opt/bloginabox/biab`
 
 The WordPress plugin will then have access to the `/opt/bloginabox/biab` CLI tool, and from here can trigger and receive data from hardware devices.
+
+## CLI Utility
+
+The web server can interface with the devices through a single executable:
+
+`/opt/bloginabox/biab`
+
+This can also be called from the command line or via anything other external tool.
+
+The executable loads up a series of device handlers that listen for commands and perform actions.
