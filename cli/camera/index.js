@@ -4,8 +4,8 @@ const cameraSettings = require( './camera-settings' );
 const schedule = require( './schedule' );
 
 module.exports = function( emitter ) {
-	emitter.on( 'takephoto', takePhoto );
-	emitter.on( 'phototowp', photoToPost );
-	emitter.on( 'camerasettings', cameraSettings );
-	emitter.on( 'cameraschedule', schedule );
+	emitter.on( 'camera-take-photo', takePhoto );
+	emitter.on( 'photo-to-wp', photoToPost );
+	emitter.on( 'camera-settings', cameraSettings );
+	emitter.on( 'camera-schedule', schedule );
 };

@@ -13,7 +13,7 @@ function takePhoto( wp, commandData ) {
 			this.emit( 'error', 'Unable to open camera' );
 		} else {
 			debug( 'Photo taken - ' + stdout.length + ' bytes' );
-			this.emit( 'phototowp', wp, commandData, stdout );
+			this.emit( 'photo-to-wp', wp, commandData, stdout );
 		}
 	} );
 }
