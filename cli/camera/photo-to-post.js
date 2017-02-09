@@ -1,7 +1,7 @@
 const debug = require( 'debug' )( 'biab:camera:photo-to-post' );
 
 const getPhotoName = () => 'photo-' + process.pid + '.jpg';
-const getPostTitle = () => new Date().toLocaleString();
+const getPostTitle = title => title ? title : new Date().toLocaleString();
 
 function getImageContent( media ) {
 	const { width, height } = media.media_details.sizes.large;
@@ -10,13 +10,13 @@ function getImageContent( media ) {
 	return `<img src="${ sized }" width="${ width }" height="${ height }" />`;
 }
 
-function createPost( wordpress, emitter, media ) {
+function createPost( wordpress, emitter, media, title ) {
 	debug( 'Creating post' );
 
 	wordpress
 		.posts()
 		.create( {
-			title: getPostTitle(),
+			title: title,
 			featured_media: media.id,
 			content: getImageContent( media ),
 			status: 'publish',
@@ -31,14 +31,14 @@ function createPost( wordpress, emitter, media ) {
 }
 
 function uploadPhoto( wp, commandData, photo ) {
-	debug( 'Uploading photo' );
+	debug( 'Uploading photo with title: ' + getPostTitle( commandData ) );
 
 	wp.media()
 		.file( photo, getPhotoName() )
 		.create()
 		.then( response => {
 			debug( 'Photo ' + response.id + ' uploaded: ' + response.source_url );
-			createPost( wp, this, response );
+			createPost( wp, this, response, getPostTitle( commandData ) );
 		} )
 		.catch( error => {
 			this.emit( 'error', 'Unable to save photo to WP - ' + error.message );

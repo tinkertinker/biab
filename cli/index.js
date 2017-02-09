@@ -18,7 +18,7 @@ if ( process.argv.length < 3 ) {
 }
 
 function runCommand( emitter, command, commandData ) {
-	debug( 'Command: "' + command + '" with data "' + commandData + '"' );
+	debug( 'Command: "' + command + '" with data "' + ( commandData ? commandData : '' ) + '"' );
 
 	emitter.on( 'error', message => {
 		console.log( JSON.stringify( { error: message } ) );
