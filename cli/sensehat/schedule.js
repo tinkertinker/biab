@@ -1,7 +1,7 @@
 const path = require( 'path' );
 const cron = require( '../cron' );
 
-function setCameraCron( wp, schedule ) {
+function setSensehatCron( wp, schedule ) {
 	const cmd = path.resolve( path.join( __dirname, '..', 'biab' ) ) + ' sensehat-capture';
 	const success = () => {
 		this.emit( 'result', 'scheduled' );
@@ -13,4 +13,4 @@ function setCameraCron( wp, schedule ) {
 	cron( cmd, wp, schedule, success, error );
 }
 
-module.exports = setCameraCron;
+module.exports = setSensehatCron;

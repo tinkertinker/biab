@@ -23,7 +23,7 @@ function createPost( wordpress, emitter, media, title ) {
 		} )
 		.then( response => {
 			debug( 'Post ' + response.id + ' created: ' + response.link );
-			emitter.emit( 'result', JSON.stringify( { id: response.id } ) );
+			emitter.emit( 'photo-published', wordpress, response );
 		} )
 		.catch( error => {
 			emitter.emit( 'error', 'Unable to save photo to WP - ' + error.message );

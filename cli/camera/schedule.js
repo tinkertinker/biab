@@ -2,7 +2,7 @@ const path = require( 'path' );
 const cron = require( '../cron' );
 
 function setCameraCron( wp, schedule ) {
-	const cmd = path.resolve( path.join( __dirname, '..', 'biab' ) ) + ' takephoto';
+	const cmd = path.resolve( path.join( __dirname, '..', 'biab' ) ) + ' camera-take-photo';
 	const success = () => {
 		this.emit( 'result', 'scheduled' );
 	};
