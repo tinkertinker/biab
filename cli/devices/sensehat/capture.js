@@ -2,7 +2,6 @@
  * External dependencies
  */
 
-const exec = require( 'child_process' ).exec;
 const debug = require( 'debug' )( 'biab:sensehat:capture' );
 
 function capture( commandData ) {
@@ -16,8 +15,8 @@ function capture( commandData ) {
 			this.emit( 'error', 'Unable to capture sensehat data' );
 		} else {
 			const json = JSON.parse( stdout );
-			debug( 'Data captured - temp=' + json.temperature + ' humidity=' + json.humidity + ' pressure=' + json.pressure );
-			this.emit( 'sensehat-reading', commandData, json );
+			debug( 'Data captured - temp=' + json.temperature + ' humidity=' + json.humidity + ' pressure=' + json.air_pressure );
+			this.emit( 'sensehat-reading', wp, commandData, json );
 		}
 	} );
 }

@@ -8,7 +8,7 @@ def main():
 	tem = (tem_humidity + tem_pressure) / 2
 	hum = sense.get_humidity()
 	air = sense.get_pressure()
-	print json.dumps( { 'temperature': tem, 'humidity': hum, 'pressure': air } )
+	print json.dumps( { 'temperature': tem, 'humidity': hum, 'air_pressure': air } )
 
 if __name__ == "__main__":
 	main()
