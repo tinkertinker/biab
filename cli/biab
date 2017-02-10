@@ -1,0 +1,11 @@
+#!/bin/sh
+DIR=$(dirname "$(readlink -f "$0")")
+LOG=$DIR/biab.log
+
+if [ -t 0 ]; then
+	# Runs in a terminal so output colourised debug
+	NODE_PATH=$DIR DEBUG=biab:* /usr/bin/node $DIR/. "$@"
+else
+	# Store debug to a log file - no colour
+	NODE_PATH=$DIR DEBUG=biab:* /usr/bin/node $DIR/. "$@" 2>>$LOG
+fi

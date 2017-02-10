@@ -1,0 +1,21 @@
+#camera-photo, #camera-error {
+	display: none;
+}
+
+#TB_ajaxContent a img {
+	width: 600px;
+	height: auto;
+	margin-top: 10px;
+}
+
+#TB_ajaxContent > img {
+	margin: 0 auto;
+	margin-top: 40%;
+	display: block;
+}
+
+.camera-snapshot img {
+	position: absolute;
+	right: 40px;
+	width: 400px;
+}
