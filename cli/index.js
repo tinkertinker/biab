@@ -7,10 +7,7 @@ const debug = require( 'debug' )( 'biab:main' );
 const WPAPI = require( 'wpapi' );
 const auth = require( './auth.json' );
 const wp = new WPAPI( auth );
-
-// Devices
-const camera = require( './camera' )( deviceEmitter );
-const sensehat = require( './sensehat' )( deviceEmitter );
+const devices = require( 'devices' )( deviceEmitter );
 
 if ( process.argv.length < 3 ) {
 	console.log( process.argv[1] + ': <command> [data]' );
