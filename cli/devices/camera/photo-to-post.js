@@ -32,6 +32,8 @@ function createPost( emitter, media, title ) {
 		} )
 		.then( response => {
 			debug( 'Post ' + response.id + ' created: ' + response.link );
+
+			response.thumbnail = media.media_details.sizes.thumbnail;
 			emitter.emit( 'photo-published', response );
 		} )
 		.catch( error => {

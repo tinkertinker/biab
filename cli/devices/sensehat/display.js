@@ -4,6 +4,8 @@
 
 const debug = require( 'debug' )( 'biab:sensehat:display' );
 const spawn = require( 'child_process' ).spawn;
+const url = require( 'url' );
+const path = require( 'path' );
 
 /**
  * Internal dependencies
@@ -30,16 +32,25 @@ function showReading( commandData ) {
 	setDisplay( 'show-message.py', temp + units );
 }
 
-function showCamera( commandData, json ) {
+function showCamera( commandData ) {
 	setDisplay( 'show-image.py', __dirname + '/display/image/mean-face.png' );
 }
 
-function clearDisplay( commandData, json ) {
+function clearDisplay( commandData ) {
 	setDisplay( 'clear.py' );
+}
+
+function showPhoto( commandData ) {
+	const wp = config.get( 'wordpress', { directory: '/opt/wp' } );
+	const wpUrl = url.parse( commandData.thumbnail.source_url );
+	const imagename = path.join( wp.directory, wpUrl.pathname );
+
+	setDisplay( 'show-resized-image.py', imagename );
 }
 
 module.exports = {
 	showReading,
 	showCamera,
 	clearDisplay,
+	showPhoto,
 };

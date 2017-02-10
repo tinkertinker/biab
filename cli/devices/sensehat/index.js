@@ -31,7 +31,7 @@ module.exports = function( emitter ) {
 		debug( 'Enabling Sensehat display' );
 		emitter.on( 'sensehat-reading', display.showReading );
 		emitter.on( 'camera-take-photo', display.showCamera );
-		emitter.on( 'photo-published', display.clearDisplay );
+		emitter.on( 'photo-published', display.showPhoto );
 		emitter.on( 'error', display.clearDisplay );
 	}
 };
