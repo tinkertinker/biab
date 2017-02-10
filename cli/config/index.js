@@ -10,7 +10,7 @@ function setConfig( section, value ) {
 	debug( 'Writing to config: ' + section, value );
 	config[section] = value;
 
-	fs.writeFileSync( filename(), JSON.stringify( config ) );
+	fs.writeFileSync( filename(), JSON.stringify( config, null, '\t' ) );
 }
 
 function getConfig( section, defaults ) {
