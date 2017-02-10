@@ -17,6 +17,8 @@ const capture = require( './capture' );
 const display = require( './display' );
 
 module.exports = function( emitter ) {
+	const conf = config.get( constants.settings, constants.defaults );
+
 	debug( 'Enabling Sensehat' );
 
 	emitter.on( 'sensehat-capture', capture );
@@ -25,8 +27,11 @@ module.exports = function( emitter ) {
 	emitter.on( 'sensehat-settings', settings );
 
 	// Display output
-	emitter.on( 'sensehat-reading', display.showReading );
-	emitter.on( 'camera-take-photo', display.showCamera );
-	emitter.on( 'photo-published', display.clearDisplay );
-	emitter.on( 'error', display.clearDisplay );
+	if ( conf.display ) {
+		debug( 'Enabling Sensehat display' );
+		emitter.on( 'sensehat-reading', display.showReading );
+		emitter.on( 'camera-take-photo', display.showCamera );
+		emitter.on( 'photo-published', display.clearDisplay );
+		emitter.on( 'error', display.clearDisplay );
+	}
 };
