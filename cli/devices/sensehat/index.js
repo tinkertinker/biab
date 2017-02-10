@@ -8,7 +8,10 @@ const debug = require( 'debug' )( 'biab:sensehat' );
  * Internal dependencies
  */
 
+const config = require( 'config' );
+const constants = require( './constants' );
 const schedule = require( './schedule' );
+const settings = require( './settings' );
 const dataToWP = require( './data-to-wp' );
 const capture = require( './capture' );
 const display = require( './display' );
@@ -18,7 +21,8 @@ module.exports = function( emitter ) {
 
 	emitter.on( 'sensehat-capture', capture );
 	emitter.on( 'sensehat-reading', dataToWP );
-	emitter.on( 'sensehat-schedule', schedule );
+	emitter.on( 'sensehat-settings', schedule );
+	emitter.on( 'sensehat-settings', settings );
 
 	// Display output
 	emitter.on( 'sensehat-reading', display.showReading );
