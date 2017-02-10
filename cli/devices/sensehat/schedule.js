@@ -1,4 +1,13 @@
+/**
+ * External dependencies
+ */
+
 const path = require( 'path' );
+
+/**
+ * Internal dependencies
+ */
+
 const cron = require( 'cron' );
 
 function setSensehatCron( wp, schedule ) {

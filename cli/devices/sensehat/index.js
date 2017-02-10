@@ -1,4 +1,12 @@
+/**
+ * External dependencies
+ */
+
 const debug = require( 'debug' )( 'biab:sensehat' );
+
+/**
+ * Internal dependencies
+ */
 
 const schedule = require( './schedule' );
 const dataToWP = require( './data-to-wp' );

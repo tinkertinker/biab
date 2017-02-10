@@ -1,12 +1,22 @@
+/**
+ * External dependencies
+ */
+
 const EventEmitter = require( 'events' ).EventEmitter;
-const deviceEmitter = new EventEmitter();
 const process = require( 'process' );
+const WPAPI = require( 'wpapi' );
 
 const debug = require( 'debug' )( 'biab:main' );
 
-const WPAPI = require( 'wpapi' );
+/**
+ * External dependencies
+ */
+
 const auth = require( './auth.json' );
+
 const wp = new WPAPI( auth );
+const deviceEmitter = new EventEmitter();
+
 const devices = require( 'devices' )( deviceEmitter );
 
 if ( process.argv.length < 3 ) {
