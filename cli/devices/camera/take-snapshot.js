@@ -12,7 +12,7 @@ const debug = require( 'debug' )( 'biab:camera:take-snapshot' );
 const config = require( 'config' );
 const constants = require( './constants' );
 
-function takePhoto( wp, commandData ) {
+function takePhoto( commandData ) {
 	const camera = config.get( constants.setting, constants.defaults );
 	const cmd = `/usr/bin/raspistill -w 640 -h 480 -n --timeout 500 ${ camera.args } -o /opt/wp/wp-content/uploads/snapshot.jpg`;
 

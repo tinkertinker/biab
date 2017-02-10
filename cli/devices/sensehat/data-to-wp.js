@@ -6,7 +6,7 @@ const exec = require( 'child_process' ).exec;
 const debug = require( 'debug' )( 'biab:sensehat:data-to-wp' );
 
 // TODO: convert this to use the wp REST API
-function dataToWP( wp, commandData, json ) {
+function dataToWP( commandData, json ) {
 	const cmd = `/usr/bin/php ${ __dirname }/data-to-wp.php '${ JSON.stringify( json ) }'`;
 
 	debug( 'Sending data to WordPress ' + cmd );

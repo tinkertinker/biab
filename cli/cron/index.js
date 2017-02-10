@@ -23,7 +23,7 @@ function intervalAsCron( interval, period ) {
 function updateCrontab( command, interval, success_cb, error_cb ) {
 	const cmd = `( crontab -l | grep -v -F "${ command }" ; echo "${ interval } ${ command }" ) | crontab -`;
 
-	debug( 'Setting camera schedule: ' + interval );
+	debug( 'Adding to cron: ' + interval );
 	debug( 'Crontab comamnd: ' + cmd );
 
 	exec( cmd, ( error, stdout ) => {
@@ -38,7 +38,7 @@ function updateCrontab( command, interval, success_cb, error_cb ) {
 function removeCrontab( command, success_cb, error_cb ) {
 	const cmd = `( crontab -l | grep -v -F "${ command }" ) | crontab -`;
 
-	debug( 'Removing camera from schedule' );
+	debug( 'Removing from cron' );
 	debug( 'Crontab comamnd: ' + cmd );
 
 	exec( cmd, ( error, stdout ) => {
@@ -50,11 +50,11 @@ function removeCrontab( command, success_cb, error_cb ) {
 	} );
 }
 
-module.exports = function( command, wp, schedule, success, error ) {
+module.exports = function( command, schedule, success, error ) {
 	const interval = getInterval( schedule );
 	const period = getPeriod( schedule );
 
-	debug( `Camera schedule: "${ schedule }" => ${ interval } ${ period }` );
+	debug( `Cron schedule: "${ schedule }" => ${ interval } ${ period }` );
 
 	if ( interval > 0 && isValidPeriod( period ) ) {
 		return updateCrontab( command, intervalAsCron( interval, period ), success, error );

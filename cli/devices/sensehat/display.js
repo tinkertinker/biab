@@ -14,15 +14,15 @@ function setDisplay( python, arg ) {
 	spawn( '/usr/bin/python', [ __dirname + '/display/' + python, arg ], { stdio: 'ignore', detached: true } );
 }
 
-function showReading( wp, commandData, json ) {
+function showReading( commandData, json ) {
 	setDisplay( 'show-message.py', round( json.temperature, 1 ) + 'C' );
 }
 
-function showCamera( wp, commandData, json ) {
+function showCamera( commandData, json ) {
 	setDisplay( 'show-image.py', __dirname + '/display/image/mean-face.png' );
 }
 
-function clearDisplay( wp, commandData, json ) {
+function clearDisplay( commandData, json ) {
 	setDisplay( 'clear.py' );
 }
 

@@ -10,7 +10,7 @@ const path = require( 'path' );
 
 const cron = require( 'cron' );
 
-function setCameraCron( wp, schedule ) {
+function setCameraCron( schedule ) {
 	const cmd = path.resolve( path.join( __dirname, '..', 'biab' ) ) + ' camera-take-photo';
 	const success = () => {
 		this.emit( 'result', 'scheduled' );
@@ -19,7 +19,7 @@ function setCameraCron( wp, schedule ) {
 		this.emit( 'error', msg );
 	};
 
-	cron( cmd, wp, schedule, success, error );
+	cron( cmd, schedule, success, error );
 }
 
 module.exports = setCameraCron;
