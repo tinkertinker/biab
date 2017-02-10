@@ -16,7 +16,7 @@ function capture( commandData ) {
 		} else {
 			const json = JSON.parse( stdout );
 			debug( 'Data captured - temp=' + json.temperature + ' humidity=' + json.humidity + ' pressure=' + json.air_pressure );
-			this.emit( 'sensehat-reading', wp, commandData, json );
+			this.emit( 'sensehat-reading', json );
 		}
 	} );
 }

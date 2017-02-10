@@ -8,5 +8,6 @@ const wp = new WPAPI( {
 	password: auth.password,
 	endpoint: wordpress.rest,
 } );
+wp.sensehat = wp.registerRoute( 'biab/v1', 'sensehat' );
 
 module.exports = wp;
