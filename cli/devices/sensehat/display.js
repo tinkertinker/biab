@@ -11,6 +11,8 @@ const spawn = require( 'child_process' ).spawn;
 const config = require( 'config' );
 const constants = require( './constants' );
 
+const fahrenheit = celsius => ( celsius * ( 9 / 5 ) ) + 32;
+
 function round( value, decimals ) {
 	return Number( Math.round( value + 'e' + decimals ) + 'e-' + decimals );
 }
@@ -23,7 +25,7 @@ function setDisplay( python, arg ) {
 function showReading( commandData ) {
 	const settings = config.get( constants.settings, constants.defaults );
 	const units = settings.units === 'celsius' ? 'C' : 'F';
-	const temp = round( settings.units === 'celsius' ? commandData.temperature : commandData.temperature * ( 9 / 5 ) + 32, 1 );
+	const temp = round( settings.units === 'celsius' ? commandData.temperature : fahrenheit( commandData.temperature ), 1 );
 
 	setDisplay( 'show-message.py', temp + units );
 }
