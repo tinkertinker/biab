@@ -4,7 +4,6 @@
 
 const EventEmitter = require( 'events' ).EventEmitter;
 const process = require( 'process' );
-const WPAPI = require( 'wpapi' );
 
 const debug = require( 'debug' )( 'biab:main' );
 
@@ -12,11 +11,7 @@ const debug = require( 'debug' )( 'biab:main' );
  * External dependencies
  */
 
-const auth = require( './auth.json' );
-
-const wp = new WPAPI( auth );
 const deviceEmitter = new EventEmitter();
-
 const devices = require( 'devices' )( deviceEmitter );
 
 if ( process.argv.length < 3 ) {
@@ -36,7 +31,7 @@ function runCommand( emitter, command, commandData ) {
 		console.log( json );
 	} );
 
-	emitter.emit( command, wp, commandData );
+	emitter.emit( command, commandData );
 
 	if ( emitter.listenerCount( command ) === 0 ) {
 		debug( 'No handler for command ' + command );

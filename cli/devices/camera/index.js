@@ -14,7 +14,7 @@ const photoToPost = require( './photo-to-post' );
 const cameraSettings = require( './camera-settings' );
 const schedule = require( './schedule' );
 
-function returnPost( wp, post ) {
+function returnPost( post ) {
 	this.emit( 'result', JSON.stringify( { id: post.id } ) );
 }
 

@@ -5,7 +5,7 @@
 const exec = require( 'child_process' ).exec;
 const debug = require( 'debug' )( 'biab:sensehat:capture' );
 
-function capture( wp, commandData ) {
+function capture( commandData ) {
 	const cmd = `/usr/bin/python ${ __dirname }/capture.py`;
 
 	debug( 'Capturing data: ' + cmd );
@@ -17,7 +17,7 @@ function capture( wp, commandData ) {
 		} else {
 			const json = JSON.parse( stdout );
 			debug( 'Data captured - temp=' + json.temperature + ' humidity=' + json.humidity + ' pressure=' + json.pressure );
-			this.emit( 'sensehat-reading', wp, commandData, json );
+			this.emit( 'sensehat-reading', commandData, json );
 		}
 	} );
 }
