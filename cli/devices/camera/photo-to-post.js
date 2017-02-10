@@ -1,3 +1,7 @@
+/**
+ * External dependencies
+ */
+
 const debug = require( 'debug' )( 'biab:camera:photo-to-post' );
 
 const getPhotoName = () => 'photo-' + process.pid + '.jpg';

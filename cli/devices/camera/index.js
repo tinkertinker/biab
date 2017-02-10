@@ -1,4 +1,12 @@
+/**
+ * External dependencies
+ */
+
 const debug = require( 'debug' )( 'biab:camera' );
+
+/**
+ * Internal dependencies
+ */
 
 const takePhoto = require( './take-photo' );
 const takeSnapshot = require( './take-snapshot' );

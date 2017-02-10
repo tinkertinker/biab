@@ -1,3 +1,7 @@
+/**
+ * External dependencies
+ */
+
 const debug = require( 'debug' )( 'biab:cron' );
 const exec = require( 'child_process' ).exec;
 

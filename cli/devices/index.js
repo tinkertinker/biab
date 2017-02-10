@@ -1,5 +1,14 @@
-const config = require( 'config' );
+/**
+ * External dependencies
+ */
+
 const debug = require( 'debug' )( 'biab:devices' );
+
+/**
+ * Internal dependencies
+ */
+
+const config = require( 'config' );
 
 // Devices
 const devices = {

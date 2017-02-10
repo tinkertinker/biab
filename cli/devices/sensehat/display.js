@@ -1,3 +1,7 @@
+/**
+ * External dependencies
+ */
+
 const debug = require( 'debug' )( 'biab:sensehat:display' );
 const spawn = require( 'child_process' ).spawn;
 

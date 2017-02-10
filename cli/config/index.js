@@ -1,3 +1,7 @@
+/**
+ * External dependencies
+ */
+
 const debug = require( 'debug' )( 'biab:config' );
 const fs = require( 'fs' );
 const path = require( 'path' );

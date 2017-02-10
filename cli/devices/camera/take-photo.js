@@ -1,6 +1,15 @@
+/**
+ * External dependencies
+ */
+
 const exec = require( 'child_process' ).exec;
-const config = require( 'config' );
 const debug = require( 'debug' )( 'biab:camera:take-photo' );
+
+/**
+ * Internal dependencies
+ */
+
+const config = require( 'config' );
 const constants = require( './constants' );
 
 function takePhoto( wp, commandData ) {

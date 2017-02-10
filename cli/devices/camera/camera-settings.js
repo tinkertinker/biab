@@ -1,5 +1,14 @@
+/**
+ * External dependencies
+ */
+
 const debug = require( 'debug' )( 'biab:camera:settings' );
 const fs = require( 'fs' );
+
+/**
+ * Internal dependencies
+ */
+
 const config = require( 'config' );
 
 function saveSettings( wp, settings ) {
