@@ -20,10 +20,10 @@ function setDisplay( python, arg ) {
 	spawn( '/usr/bin/python', [ __dirname + '/display/' + python, arg ], { stdio: 'ignore', detached: true } );
 }
 
-function showReading( commandData, json ) {
+function showReading( commandData ) {
 	const settings = config.get( constants.settings, constants.defaults );
 	const units = settings.units === 'celsius' ? 'C' : 'F';
-	const temp = round( settings.units === 'celsius' ? json.temperature : json.temperature * ( 9 / 5 ) + 32, 1 );
+	const temp = round( settings.units === 'celsius' ? commandData.temperature : commandData.temperature * ( 9 / 5 ) + 32, 1 );
 
 	setDisplay( 'show-message.py', temp + units );
 }

@@ -2,6 +2,7 @@
  * External dependencies
  */
 
+const exec = require( 'child_process' ).exec;
 const debug = require( 'debug' )( 'biab:sensehat:capture' );
 
 function capture( commandData ) {
