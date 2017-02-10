@@ -1,8 +1,10 @@
 const exec = require( 'child_process' ).exec;
-const camera = require( './camera.json' );
+const config = require( '../config' );
 const debug = require( 'debug' )( 'biab:camera:take-snapshot' );
+const constants = require( './constants' );
 
 function takePhoto( wp, commandData ) {
+	const camera = config.get( constants.setting, constants.defaults );
 	const cmd = `/usr/bin/raspistill -w 640 -h 480 -n --timeout 500 ${ camera.args } -o /opt/wp/wp-content/uploads/snapshot.jpg`;
 
 	debug( 'Taking photo: ' + cmd );

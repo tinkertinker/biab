@@ -1,11 +1,11 @@
 const debug = require( 'debug' )( 'biab:camera:settings' );
 const fs = require( 'fs' );
+const config = require( '../config' );
 
 function saveSettings( wp, settings ) {
-	const args = { args: settings };
+	debug( 'Camera settings: ' + settings );
 
-	debug( 'Saving settings: ' + settings );
-	fs.writeFileSync( __dirname + '/camera.json', JSON.stringify( args ) );
+	config.set( 'camera_settings', { args: settings } );
 }
 
 module.exports = saveSettings;
