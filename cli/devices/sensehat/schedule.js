@@ -11,7 +11,7 @@ const path = require( 'path' );
 const cron = require( 'cron' );
 
 function setSensehatCron( schedule ) {
-	const cmd = path.resolve( path.join( __dirname, '..', 'biab' ) ) + ' sensehat-capture';
+	const cmd = path.resolve( path.join( __dirname, '..', '..', 'biab' ) ) + ' sensehat-capture';
 	const success = () => {
 		this.emit( 'result', 'scheduled' );
 	};

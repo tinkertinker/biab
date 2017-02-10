@@ -5,6 +5,12 @@
 const debug = require( 'debug' )( 'biab:sensehat:display' );
 const spawn = require( 'child_process' ).spawn;
 
+/**
+ * Internal dependencies
+ */
+const config = require( 'config' );
+const constants = require( './constants' );
+
 function round( value, decimals ) {
 	return Number( Math.round( value + 'e' + decimals ) + 'e-' + decimals );
 }
@@ -15,7 +21,11 @@ function setDisplay( python, arg ) {
 }
 
 function showReading( commandData, json ) {
-	setDisplay( 'show-message.py', round( json.temperature, 1 ) + 'C' );
+	const settings = config.get( constants.settings, constants.defaults );
+	const units = settings.units === 'celsius' ? 'C' : 'F';
+	const temp = round( settings.units === 'celsius' ? json.temperature : json.temperature * ( 9 / 5 ) + 32, 1 );
+
+	setDisplay( 'show-message.py', temp + units );
 }
 
 function showCamera( commandData, json ) {

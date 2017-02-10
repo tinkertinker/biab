@@ -37,7 +37,7 @@ function saveDevices( param ) {
 const enableDevice = ( device, emitter ) => devices[device] ? devices[device]( emitter ) : false;
 
 module.exports = function( emitter ) {
-	const enabled = config.get( DEVICE_CONFIG );
+	const enabled = config.get( DEVICE_CONFIG, [] );
 
 	debug( 'Enabled devices: ' + enabled.join( ', ' ) );
 
