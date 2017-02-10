@@ -1,3 +1,5 @@
+const debug = require( 'debug' )( 'biab:camera' );
+
 const takePhoto = require( './take-photo' );
 const takeSnapshot = require( './take-snapshot' );
 const photoToPost = require( './photo-to-post' );
@@ -9,6 +11,8 @@ function returnPost( wp, post ) {
 }
 
 module.exports = function( emitter ) {
+	debug( 'Enabling camera' );
+
 	emitter.on( 'camera-take-photo', takePhoto );
 	emitter.on( 'camera-snapshot', takeSnapshot );
 	emitter.on( 'photo-to-wp', photoToPost );

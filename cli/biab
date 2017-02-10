@@ -4,8 +4,8 @@ LOG=$DIR/biab.log
 
 if [ -t 0 ]; then
 	# Runs in a terminal so output colourised debug
-	DEBUG=biab:* /usr/bin/node $DIR/. "$@"
+	NODE_PATH=$DIR DEBUG=biab:* /usr/bin/node $DIR/. "$@"
 else
 	# Store debug to a log file - no colour
-	DEBUG=biab:* /usr/bin/node $DIR/. "$@" 2>>$LOG
+	NODE_PATH=$DIR DEBUG=biab:* /usr/bin/node $DIR/. "$@" 2>>$LOG
 fi
